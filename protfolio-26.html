@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,32 +54,6 @@
         --nav-bg: rgba(241, 241, 239, 0.88);
       }
 
-      [data-theme="dark"] {
-        --bg: #0a0a0a;
-        --bg-elevated: #141414;
-        --fg: #d8d1d1;
-        --fg-muted: #b0b0b0;
-        --fg-soft: #707070;
-        --accent: #ff5e1a;
-        --accent-hover: #ff7a3d;
-        --accent-glow: rgba(255, 94, 26, 0.35);
-        --silver: #5a5a5a;
-        --border: rgba(255, 255, 255, 0.1);
-        --border-strong: rgba(255, 255, 255, 0.25);
-        --card: #141414;
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
-        --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.6);
-        --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.75);
-        --grid-line: rgba(255, 255, 255, 0.035);
-        --code-bg: #0f0f0f;
-        --code-keyword: #ff7a3d;
-        --code-string: #98c379;
-        --code-property: #61afef;
-        --code-comment: #6a6a6a;
-        --code-var: #e06c75;
-        --nav-bg: rgba(10, 10, 10, 0.88);
-      }
-
       /* =========================================================
    2. RESET & BASE  (hardened with fallbacks)
    ========================================================= */
@@ -98,28 +72,13 @@
       }
 
       body {
-        font-family:
-          "Barlow Condensed",
-          system-ui,
-          -apple-system,
-          sans-serif;
+        font-family: "Barlow Condensed", system-ui, sans-serif;
         font-size: 17px;
-        color: var(--fg, #0a0a0a);
+        color: var(--fg);
         line-height: 1.55;
-        font-weight: 400;
         min-height: 100vh;
-        background-color: var(--bg, #f1f1ef);
-        background-image:
-          linear-gradient(
-            var(--grid-line, rgba(0, 0, 0, 0.04)) 1px,
-            transparent 1px
-          ),
-          linear-gradient(
-            90deg,
-            var(--grid-line, rgba(0, 0, 0, 0.04)) 1px,
-            transparent 1px
-          );
-        background-size: 64px 64px;
+        background-color: var(--bg);
+        background-image: none; /* Removed the pattern */
         transition:
           background-color 0.4s ease,
           color 0.4s ease;
@@ -307,27 +266,6 @@
         gap: 12px;
       }
 
-      .theme-toggle,
-      .menu-toggle {
-        width: 42px;
-        height: 42px;
-        border: 1px solid var(--border-strong);
-        background: transparent;
-        color: var(--fg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        transition: all 0.3s ease;
-        border-radius: 2px;
-      }
-      .theme-toggle:hover {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #fff;
-        transform: rotate(-15deg);
-      }
-
       .menu-toggle {
         display: none;
       }
@@ -388,6 +326,24 @@
         align-items: center;
         padding: 140px 0 80px;
         position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "SDE";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-45%, -50%);
+        font-family: "Anton", "Impact", sans-serif;
+        font-size: 45vw; /* Massive size */
+        letter-spacing: 0.2em; /* Adds the space between letters */
+        line-height: 0.8;
+        color: var(--fg);
+        opacity: 0.05; /* Very faint */
+        z-index: 0;
+        pointer-events: none;
+        white-space: nowrap;
       }
 
       .hero-grid {
@@ -1169,32 +1125,11 @@
         position: relative;
         z-index: 1;
       }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 40px;
-        align-items: end;
-        margin-bottom: 40px;
-        padding-bottom: 32px;
-        border-bottom: 1px solid var(--border);
-      }
-      .footer-big {
-        font-family: "Anton", "Impact", sans-serif;
-        font-size: clamp(40px, 6vw, 88px);
-        line-height: 0.95;
-        text-transform: uppercase;
-      }
+
       .footer-big .accent {
         color: var(--accent);
       }
-      .footer-tagline {
-        font-size: 14px;
-        color: var(--fg-muted);
-        max-width: 280px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 500;
-      }
+
       .footer-bottom {
         display: flex;
         justify-content: space-between;
@@ -1433,13 +1368,6 @@
           </ul>
         </nav>
         <div class="nav-actions">
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle dark mode"
-          >
-            <i class="fas fa-moon" id="themeIcon"></i>
-          </button>
           <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
             <i class="fas fa-bars" id="menuIcon"></i>
           </button>
@@ -1477,16 +1405,16 @@
               </div>
               <div class="hero-stats reveal delay-3">
                 <div class="stat">
-                  <div class="stat-number">4<span class="plus">+</span></div>
-                  <div class="stat-label">Years Coding</div>
+                  <div class="stat-number">8.0<span class="plus">+</span></div>
+                  <div class="stat-label">CGPA</div>
                 </div>
                 <div class="stat">
-                  <div class="stat-number">25<span class="plus">+</span></div>
-                  <div class="stat-label">Projects Built</div>
+                  <div class="stat-number">500<span class="plus">+</span></div>
+                  <div class="stat-label">Git Commits</div>
                 </div>
                 <div class="stat">
-                  <div class="stat-number">12</div>
-                  <div class="stat-label">Open Source Repos</div>
+                  <div class="stat-number">2024</div>
+                  <div class="stat-label">Graduating</div>
                 </div>
               </div>
             </div>
@@ -2091,14 +2019,6 @@
 
     <footer class="footer">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-big">
-            Let's build<br /><span class="accent">something real.</span>
-          </div>
-          <p class="footer-tagline">
-            Designed and engineered with intent — always iterating.
-          </p>
-        </div>
         <div class="footer-bottom">
           <span>© 2025 Md Shahil · All rights reserved</span>
           <a href="#hero" class="back-to-top"
@@ -2109,119 +2029,6 @@
     </footer>
 
     <script>
-      /* =========================================================
-   0. TERMINAL PRELOADER (Boot Sequence)
-   ========================================================= */
-      (function () {
-        var preloader = document.getElementById("preloader");
-        var output = document.getElementById("terminal-output");
-        var cursor = document.getElementById("terminal-cursor");
-        if (!preloader || !output || !cursor) return;
-
-        // Lock scroll while loading
-        document.body.classList.add("no-scroll");
-
-        var lines = [
-          { text: "> initializing portfolio...", delay: 400 },
-          {
-            text: "> establishing secure connection... [OK]",
-            delay: 500,
-            success: true,
-          },
-          {
-            text: "> fetching user data [Md Shahil]... [OK]",
-            delay: 500,
-            success: true,
-          },
-          {
-            text: "> loading modules [\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588] 100%",
-            delay: 600,
-            accent: true,
-          },
-          { text: "> welcome, recruiter.", delay: 800 },
-        ];
-
-        var typeSpeed = 35; // Speed of typing characters
-
-        function sleep(ms) {
-          return new Promise(function (resolve) {
-            setTimeout(resolve, ms);
-          });
-        }
-
-        async function runBootSequence() {
-          for (var i = 0; i < lines.length; i++) {
-            var line = lines[i];
-            var p = document.createElement("p");
-            if (line.accent) p.classList.add("term-accent");
-            if (line.success) p.classList.add("term-success");
-            output.appendChild(p);
-
-            // Type out character by character
-            for (var j = 0; j < line.text.length; j++) {
-              p.textContent += line.text[j];
-              await sleep(typeSpeed);
-            }
-
-            await sleep(line.delay || 200);
-          }
-
-          await sleep(600);
-
-          // Boot sequence complete, wipe screen
-          preloader.classList.add("hidden");
-          document.body.classList.remove("no-scroll");
-        }
-
-        // Start the sequence
-        runBootSequence();
-
-        // SAFETY FALLBACK: Force hide after 6 seconds no matter what
-        setTimeout(function () {
-          if (!preloader.classList.contains("hidden")) {
-            preloader.classList.add("hidden");
-            document.body.classList.remove("no-scroll");
-          }
-        }, 6000);
-      })();
-
-      /* =========================================================
-   1. THEME TOGGLE
-   ========================================================= */
-      (function () {
-        var root = document.documentElement;
-        var toggleBtn = document.getElementById("themeToggle");
-        var icon = document.getElementById("themeIcon");
-
-        var saved = null;
-        try {
-          saved = localStorage.getItem("portfolio-theme");
-        } catch (e) {}
-
-        var prefersDark =
-          window.matchMedia &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches;
-        var initialTheme = saved || (prefersDark ? "dark" : "light");
-
-        function applyTheme(theme) {
-          root.setAttribute("data-theme", theme);
-          if (icon)
-            icon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
-          try {
-            localStorage.setItem("portfolio-theme", theme);
-          } catch (e) {}
-        }
-
-        applyTheme(initialTheme);
-
-        if (toggleBtn) {
-          toggleBtn.addEventListener("click", function () {
-            var current = root.getAttribute("data-theme");
-            applyTheme(current === "dark" ? "light" : "dark");
-          });
-        }
-      })();
-
       /* =========================================================
    2. MOBILE MENU
    ========================================================= */
