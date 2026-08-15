@@ -152,13 +152,6 @@
         padding-bottom: 32px;
       }
 
-      .section-number {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 14px;
-        color: var(--accent);
-        letter-spacing: 0.1em;
-      }
-
       .section-header h2 {
         font-size: clamp(40px, 6vw, 80px);
         flex: 1;
@@ -166,15 +159,6 @@
 
       .section-header h2 .accent {
         color: var(--accent);
-      }
-
-      .section-tagline {
-        font-size: 16px;
-        color: var(--fg-muted);
-        max-width: 320px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-weight: 500;
       }
 
       /* =========================================================
@@ -600,13 +584,63 @@
         font-weight: 500;
       }
 
-      .about-card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        padding: 32px;
-        box-shadow: var(--shadow-md);
-        margin-bottom: 20px;
+      /* --- Editorial Pull-Quote & Now List --- */
+
+      .now-section {
+        padding-left: 24px;
       }
+
+      .now-header {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        margin-bottom: 24px;
+      }
+
+      .now-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .now-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .now-list li:last-child {
+        border-bottom: none;
+      }
+
+      .now-key {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--fg-soft);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .now-val {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--fg);
+        text-align: right;
+      }
+
+      @media (max-width: 1024px) {
+        .pull-quote {
+          margin-top: 40px;
+          margin-bottom: 40px;
+          font-size: 28px;
+        }
+      }
+
       .about-card-header {
         display: flex;
         justify-content: space-between;
@@ -686,6 +720,110 @@
       .achievement-banner span {
         font-size: 14px;
         color: var(--fg-muted);
+      }
+
+      /* --- Backend Architecture Visual --- */
+      .arch-container {
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 32px;
+        box-shadow: var(--shadow-md);
+      }
+      .arch-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--fg-soft);
+        font-weight: 600;
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .arch-flow {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+      .arch-box {
+        flex: 1;
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 12px 8px;
+        border: 1px solid var(--border-strong);
+        color: var(--fg-muted);
+        transition: all 0.3s ease;
+      }
+      .arch-box:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .arch-box.arch-accent {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+      .arch-arrow {
+        color: var(--accent);
+        font-weight: bold;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .arch-connector {
+        width: 1px;
+        height: 20px;
+        background: var(--border-strong);
+        margin: 0 auto 8px;
+      }
+      .arch-principles {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px dashed var(--border);
+      }
+      .arch-principles h4 {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--accent);
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+      .arch-principles ul {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+      }
+      .arch-principles li {
+        font-size: 15px;
+        color: var(--fg);
+        position: relative;
+        padding-left: 20px;
+      }
+      .arch-principles li::before {
+        content: ">";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: bold;
+      }
+
+      /* Make it stack nicely on mobile */
+      @media (max-width: 768px) {
+        .arch-flow {
+          flex-direction: column;
+        }
+        .arch-arrow {
+          transform: rotate(90deg);
+        }
+        .arch-connector {
+          height: 16px;
+        }
       }
 
       /* =========================================================
@@ -1257,9 +1395,7 @@
           gap: 12px;
           margin-bottom: 40px;
         }
-        .section-tagline {
-          width: 100%;
-        }
+
         .hero-tag {
           font-size: 11px;
           letter-spacing: 0.12em;
@@ -1352,8 +1488,67 @@
           flex-direction: column;
         }
       }
+
+      /* =========================================================
+   16.  Journey / Timeline
+   ========================================================= */
+
+      .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding-left: 40px;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        background: var(--border-strong);
+      }
+      .timeline-item {
+        position: relative;
+        padding-bottom: 48px;
+      }
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+      .timeline-item::after {
+        content: "";
+        position: absolute;
+        left: -45px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        background: var(--bg);
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        z-index: 1;
+      }
+      .timeline-year {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        color: var(--accent);
+        margin-bottom: 8px;
+        letter-spacing: 0.1em;
+        font-weight: 500;
+      }
+      .timeline-content h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+      }
+      .timeline-content p {
+        color: var(--fg-muted);
+        font-size: 16px;
+        line-height: 1.6;
+      }
     </style>
   </head>
+
   <body>
     <header class="nav" id="nav">
       <div class="nav-container">
@@ -1382,18 +1577,14 @@
             <div class="hero-content">
               <div class="hero-tag reveal">
                 <span class="dot"></span>
-                Open to New Opportunities ·
-                <span style="text-transform: none; letter-spacing: 0.1em"
-                  >24hr</span
-                >Response Time
+                Open to New Opportunities
               </div>
               <h1 class="reveal delay-1">
                 MD<br /><span class="accent">SHAHIL.</span>
               </h1>
               <p class="hero-subtitle reveal delay-2">
-                <strong>Software Engineering student</strong> building
-                performant systems with intent — from low-level architecture to
-                polished interfaces.
+                <strong>Backend & Systems Developer</strong> passionate about
+                building scalable architecture and intuitive user experiences.
               </p>
               <div class="hero-cta reveal delay-3">
                 <a href="#projects" class="btn btn-primary"
@@ -1441,89 +1632,80 @@
       <section id="about" class="section">
         <div class="container">
           <div class="section-header reveal">
-            <span class="section-number">01 / ABOUT</span>
-            <h2>The <span class="accent">Engineer</span></h2>
-            <p class="section-tagline">
-              Background, motivation, and what I bring to a team.
-            </p>
+            <h2>WHO <span class="accent">AM I</span></h2>
           </div>
           <div class="about-grid">
             <div class="about-text reveal">
               <p class="about-lead">
-                I'm a third-year Software Engineering student obsessed with how
-                systems work — at every layer of the stack.
+                I'm a Software Engineering student who loves working on complex
+                ideas and turning them into clean, reliable code.
               </p>
               <p>
-                What started as tinkering with Arduino at 14 became a relentless
-                pursuit of building things that matter. From reverse-engineering
-                APIs to designing fault-tolerant backends, I treat every project
-                as a chance to learn something I didn't know yesterday.
+                I don't like black boxes. Whether I'm building MERN stack apps,
+                writing backend logic in Node.js, or exploring system
+                architectures, I want to know how things work under the hood. I
+                get a real kick out of tricky problems—like building pathfinding
+                algorithm visualizers from scratch or setting up real-time data
+                pipelines that run fast and feel smooth.
               </p>
               <p>
-                I gravitate toward problems where performance, correctness, and
-                user experience all matter — equally. When I'm not in the
-                editor, I'm contributing to open source, mentoring first-year
-                students, or shipping hackathon projects in 48-hour sprints.
+                For me, good code isn't just about getting things to compile;
+                it's about building software that is performant, clean, and
+                genuinely useful.
               </p>
               <div class="about-info">
                 <div class="info-item">
                   <i class="fas fa-graduation-cap"></i>
                   <div>
-                    <strong>Education</strong
-                    ><span>B.Eng Software Engineering · 2026</span>
+                    <strong>Education</strong>
+                    <span>MCA · 2026 (BCA '24)</span>
                   </div>
                 </div>
                 <div class="info-item">
                   <i class="fas fa-map-marker-alt"></i>
                   <div>
-                    <strong>Location</strong><span>Dhanbad, India</span>
+                    <strong>Based In</strong>
+                    <span>Dhanbad, India</span>
                   </div>
                 </div>
                 <div class="info-item">
-                  <i class="fas fa-briefcase"></i>
+                  <i class="fas fa-laptop-code"></i>
                   <div>
-                    <strong>Experience</strong
-                    ><span>SDE Intern @ DataNova (2024)</span>
+                    <strong>Focus</strong>
+                    <span>Backend & Systems</span>
                   </div>
                 </div>
                 <div class="info-item">
-                  <i class="fas fa-language"></i>
+                  <i class="fas fa-bullseye"></i>
                   <div>
-                    <strong>Languages</strong
-                    ><span>Hindi, English, Bengali</span>
+                    <strong>Status</strong>
+                    <span>Actively learning</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="about-visual reveal delay-1">
-              <div class="about-card">
-                <div class="about-card-header">
-                  <span>Current Focus</span><span class="live-dot"></span>
-                </div>
-                <ul class="focus-list">
-                  <li>
-                    <span class="focus-tag">Research</span
-                    ><span>Distributed consensus algorithms</span>
-                  </li>
-                  <li>
-                    <span class="focus-tag">Building</span
-                    ><span>Open-source telemetry SDK</span>
-                  </li>
-                  <li>
-                    <span class="focus-tag">Learning</span
-                    ><span>Rust + WebAssembly</span>
-                  </li>
-                  <li>
-                    <span class="focus-tag">Reading</span
-                    ><span>Designing Data-Intensive Apps</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="achievement-banner">
-                <i class="fas fa-trophy"></i>
-                <div>
-                  <strong>1st Place</strong
-                  ><span>NorthHacks 2024 · Best Systems Hack</span>
+              <div class="about-visual reveal delay-1">
+                <div class="now-section">
+                  <span class="now-header">// CURRENTLY UPGRADING</span>
+                  <ul class="now-list">
+                    <li>
+                      <span class="now-key">Learning</span>
+                      <span class="now-val">Rust & System Design</span>
+                    </li>
+                    <li>
+                      <span class="now-key">Building</span>
+                      <span class="now-val">Open-source side projects</span>
+                    </li>
+                    <li>
+                      <span class="now-key">Reading</span>
+                      <span class="now-val">Designing Data-Intensive Apps</span>
+                    </li>
+                    <li>
+                      <span class="now-key">Seeking</span>
+                      <span class="now-val">SDE Roles for 2026</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -1538,11 +1720,7 @@
       >
         <div class="container">
           <div class="section-header reveal">
-            <span class="section-number">02 / SKILLS</span>
-            <h2>Technical <span class="accent">skills</span></h2>
-            <p class="section-tagline">
-              Tools, languages, and frameworks I reach for.
-            </p>
+            <h2>Tools & <span class="accent">technologies</span></h2>
           </div>
           <div class="skills-featured reveal">
             <div class="skill-bar">
@@ -1682,12 +1860,81 @@
         </div>
       </section>
 
+      <!-- JOURNEY SECTION -->
+      <section id="journey" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>MY <span class="accent">JOURNEY</span></h2>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-year">2021</div>
+              <div class="timeline-content">
+                <h3>Started B.Eng Software Engineering</h3>
+                <p>
+                  Took my first formal steps into computer science. Learned the
+                  fundamentals of C/C++, data structures, and how computers
+                  actually think at the lowest levels.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="timeline-year">2023</div>
+              <div class="timeline-content">
+                <h3>Shifted to Backend & Systems</h3>
+                <p>
+                  Fell in love with the logic behind the screen. Started
+                  building REST APIs, learning databases (PostgreSQL), and
+                  mastering Java & TypeScript to build real-world applications.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="timeline-year">2024</div>
+              <div class="timeline-content">
+                <h3>Graduated & Started MCA</h3>
+                <p>
+                  Completed my undergraduate degree. Realized I wanted a deeper
+                  understanding of system design and architecture, so I pursued
+                  a Master's in Computer Applications (MCA).
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="timeline-year">2025</div>
+              <div class="timeline-content">
+                <h3>Building & Scaling</h3>
+                <p>
+                  Currently focusing on distributed systems, Docker, and writing
+                  production-level code. Actively solving DSA problems and
+                  building open-source projects to sharpen my skills.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item reveal">
+              <div class="timeline-year">2026</div>
+              <div class="timeline-content">
+                <h3>MCA Graduate / Seeking SDE Roles</h3>
+                <p>
+                  Ready to enter the industry as a Backend & Systems Developer.
+                  Actively looking for full-time Software Engineering
+                  opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="projects" class="section">
         <div class="container">
           <div class="section-header reveal">
-            <span class="section-number">03 / WORK</span>
-            <h2>Selected <span class="accent">Projects</span></h2>
-            <p class="section-tagline">Things I've built that I'm proud of.</p>
+            <h2>Key <span class="accent">Projects</span></h2>
           </div>
           <div class="projects-grid">
             <article class="project-card reveal">
@@ -1868,11 +2115,7 @@
       >
         <div class="container">
           <div class="section-header reveal">
-            <span class="section-number">04 / CONTACT</span>
             <h2>Get In <span class="accent">Touch</span></h2>
-            <p class="section-tagline">
-              Open to internships, collaborations, and a good chat.
-            </p>
           </div>
           <div class="contact-grid">
             <form
